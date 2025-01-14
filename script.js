@@ -228,5 +228,6 @@ if(isOpen){
 
 
 
-
-}) // usando documentação TOASTIFY.JS PARA ALERTAS
+// usando documentação TOASTIFY.JS PARA ALERTAS
+}) 
+// usando documentação TOASTIFY.JS PARA ALERTAS
