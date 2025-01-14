@@ -123,7 +123,8 @@ function addToCart(name, price) {
     });
   }
   updateCartModal();
-  updateCartCounter(); // Atualiza o contador aqui
+  updateCartCounter(); // Atualiza o contador aqui neste codigo 
+  // 
 
 }
 
