@@ -18,10 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartModal();
   })
 
-  // fechando o modal do carrinho
-  cartModal.addEventListener("click", function (event) {
-    console.log(event);
-  })
 
   cartModal.addEventListener("click", function (event) {
     // quando eu clicar fora do modal, ele fecha tbm
@@ -59,6 +55,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     updateCartModal();
   }
+
+  // Atualizando contator do carrinho
+function updateCartCounter() {
+  const totalitems = cart.reduce((total, item) => total + item.quantity, 0);
+  cartCounter.textContent = totalitems; 
+  
+}
+
+ 
 
   // atualizando o carrinho
   function updateCartModal() {
@@ -104,6 +109,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })
 
+
+function addToCart(name, price) {
+  const existingItem = cart.find((item) => item.name === name);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      name,
+      price,
+      quantity: 1,
+    });
+  }
+  updateCartModal();
+  updateCartCounter(); // Atualiza o contador aqui
+
+}
+
+
+
    function removeItemCart(name){
     const index = cart.findIndex(item => item.name === name);
     if(index !== -1){
@@ -116,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       cart.splice(index, 1);
       updateCartModal();
+      updateCartCounter();
     }
    }
 
@@ -128,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   })
 
-  // Finalizar pedido
+  // Finalizando pedido
   checkoutBtn.addEventListener("click", function(){    // colocando evento de legenda em vermelho no endereço de entrega
     
    const isOpen = checkRestaurantOpen();
